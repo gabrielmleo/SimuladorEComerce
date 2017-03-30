@@ -14,5 +14,7 @@ public interface MVP {
     }
     public interface ModelOp{
 
+        public void retrieveProdutos();
+        public void retrofitConfiguration();
     }
 }
