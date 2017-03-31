@@ -7,7 +7,7 @@ import android.os.Parcelable;
  * Created by gabri on 28/03/2017.
  */
 
-public class Produto implements Parcelable{
+public class Product implements Parcelable{
 
     private String title;
     private String price;
@@ -65,11 +65,11 @@ public class Produto implements Parcelable{
         this.title = title;
     }
 
-    public Produto(){
+    public Product(){
 
     }
 
-    protected Produto(Parcel in){
+    protected Product(Parcel in){
 
         this.title = in.readString();
         this.price = in.readString();
@@ -97,15 +97,15 @@ public class Produto implements Parcelable{
         dest.writeString(this.date);
     }
 
-    public static final Parcelable.Creator<Produto> CREATOR = new Parcelable.Creator<Produto>() {
+    public static final Parcelable.Creator<Product> CREATOR = new Parcelable.Creator<Product>() {
         @Override
-        public Produto createFromParcel(Parcel source) {
-            return new Produto(source);
+        public Product createFromParcel(Parcel source) {
+            return new Product(source);
         }
 
         @Override
-        public Produto[] newArray(int size) {
-            return new Produto[size];
+        public Product[] newArray(int size) {
+            return new Product[size];
         }
     };
 

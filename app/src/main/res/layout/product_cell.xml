@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
     <!-- A CardView that contains a TextView -->
     <android.support.v7.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -11,19 +14,19 @@
         android:layout_height="300dp"
         card_view:cardCornerRadius="4dp">
 
-        <ImageView
-            android:id="@+id/produto_image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/produto_image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"/>
             <TextView
                 android:id="@+id/nome_produto_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"/>
+                android:layout_below="@id/produto_image"
+                android:layout_alignParentLeft="true"/>
             <TextView
                 android:id="@+id/nome_loja_text"
                 android:layout_width="wrap_content"
@@ -35,8 +38,8 @@
                 android:id="@+id/preco_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/nome_loja_text"
-                android:layout_alignTop="@id/nome_loja_text"
+                android:layout_toRightOf="@id/nome_produto_text"
+                android:layout_alignTop="@id/nome_produto_text"
                 android:layout_alignParentRight="true"/>
         </RelativeLayout>
     </android.support.v7.widget.CardView>

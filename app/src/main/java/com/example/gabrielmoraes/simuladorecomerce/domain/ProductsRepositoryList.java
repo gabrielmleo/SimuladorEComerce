@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by gabri on 29/03/2017.
  */
 
-public class ProdutosRepositoryList {
+public class ProductsRepositoryList {
 
-    public ArrayList<Produto> produtos;
+    public ArrayList<Product> products;
 }
