@@ -4,5 +4,13 @@
 
     <string name="buy_button_text">comprar</string>
     <string name="cart_menu_text">carrinho</string>
+    <string name="cart_finish">finalizar compra</string>
     <string name="empty_cart_text">Seu carrinho está vazio.</string>
+
+    <string name="credit_card_hint">Número do cartão</string>
+    <string name="credit_card_owner_name_hint">Nome</string>
+    <string name="cvv_card_hint">Código de segurança</string>
+    <string name="expire_date_hint">Validade</string>
+    <string name="month_hint">Mês</string>
+    <string name="year_hint">Ano</string>
 </resources>

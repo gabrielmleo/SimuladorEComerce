@@ -75,13 +75,20 @@ public class MainActivity extends AppCompatActivity implements MVP.ViewOp{
     }
 
     @Override
-    public void showCartActivity() {
-        startActivity(new Intent(this,CartActivity.class));
+    public void showCartActivity(Bundle b) {
+        Intent i = new Intent(this,CartActivity.class);
+        i.putExtras(b);
+        startActivity(i);
 
     }
 
     @Override
     public boolean callSuperOnOptionItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void addProductToCart(Product p) {
+        presenter.addProductToCart(p);
     }
 }

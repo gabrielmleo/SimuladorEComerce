@@ -1,7 +1,10 @@
 package com.example.gabrielmoraes.simuladorecomerce.mvp;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.gabrielmoraes.simuladorecomerce.CartActivity;
 import com.example.gabrielmoraes.simuladorecomerce.R;
 import com.example.gabrielmoraes.simuladorecomerce.domain.Product;
 import com.example.gabrielmoraes.simuladorecomerce.domain.ProductsRepositoryList;
@@ -16,7 +19,8 @@ public class Presenter implements MVP.PresenterOp {
 
     private MVP.ModelOp mModelOp;
     private MVP.ViewOp mViewOp;
-    private ArrayList<Product> mProductList = new ArrayList<Product>();
+    private ArrayList<Product> mProductList = new ArrayList<>();
+    private ArrayList<Product> mCartProductList = new ArrayList<>();
 
 
     public Presenter (MVP.ViewOp mViewOp){
@@ -45,11 +49,18 @@ public class Presenter implements MVP.PresenterOp {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.cart_menu_button:
-                mViewOp.showCartActivity();
+                Bundle b = new Bundle();
+                b.putParcelableArrayList("CART_PRODUCTS",mCartProductList);
+                mViewOp.showCartActivity(b);
                 return true;
             default:
                 return mViewOp.callSuperOnOptionItemSelected(item);
         }
+    }
+
+    @Override
+    public void addProductToCart(Product p) {
+        mCartProductList.add(p);
     }
 
 

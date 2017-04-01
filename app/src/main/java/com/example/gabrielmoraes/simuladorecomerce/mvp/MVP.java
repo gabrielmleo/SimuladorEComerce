@@ -1,5 +1,7 @@
 package com.example.gabrielmoraes.simuladorecomerce.mvp;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.gabrielmoraes.simuladorecomerce.domain.Product;
@@ -15,8 +17,9 @@ public interface MVP {
 
     public interface ViewOp{
         public void updateProductsList();
-        public void showCartActivity();
+        public void showCartActivity(Bundle p);
         public boolean callSuperOnOptionItemSelected(MenuItem item);
+        public void addProductToCart(Product p);
     }
 
     public interface PresenterOp{
@@ -24,6 +27,8 @@ public interface MVP {
         public void retrieveProducts();
         public void updateProductsList(ArrayList<Product> mList);
         public boolean onOptionsItemSelected(MenuItem item);
+        public void addProductToCart(Product p);
+
     }
 
     public interface ModelOp{
@@ -33,5 +38,11 @@ public interface MVP {
 
     public interface CartViewOp{
 
+    }
+
+    public interface CartPresenterOp{
+        public void setView(CartViewOp view);
+        public void setCartProducts(ArrayList<Product> list);
+        public ArrayList<Product> getCartProductsList();
     }
 }

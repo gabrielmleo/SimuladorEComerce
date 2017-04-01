@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.gabrielmoraes.simuladorecomerce.CartActivity;
 import com.example.gabrielmoraes.simuladorecomerce.R;
 import com.example.gabrielmoraes.simuladorecomerce.domain.Product;
 import com.squareup.picasso.Picasso;
@@ -20,6 +21,12 @@ import java.util.ArrayList;
 public class CartProductsAdapter extends RecyclerView.Adapter<CartProductsAdapter.CartViewHolder> {
 
     private ArrayList<Product> mProducts;
+    private CartActivity mCartActivity;
+
+    public CartProductsAdapter(CartActivity activity, ArrayList<Product> p){
+        mProducts = p;
+        mCartActivity = activity;
+    }
 
 
     @Override
@@ -45,18 +52,21 @@ public class CartProductsAdapter extends RecyclerView.Adapter<CartProductsAdapte
         private ImageView mCartProductImage;
         private TextView mCartProductName;
         private TextView mCartProductSeller;
+        private TextView mCartProductPrice;
 
         public CartViewHolder(View itemView) {
             super(itemView);
 
-            this.mCartProductImage = (ImageView) itemView.findViewById(R.id.cart_product_image);
-            this.mCartProductName = (TextView) itemView.findViewById(R.id.cart_product_name);
-            this.mCartProductSeller = (TextView) itemView.findViewById(R.id.cart_seller_product_name);
+            mCartProductImage = (ImageView) itemView.findViewById(R.id.cart_product_image);
+            mCartProductName = (TextView) itemView.findViewById(R.id.cart_product_name);
+            mCartProductSeller = (TextView) itemView.findViewById(R.id.cart_seller_product_name);
+            mCartProductPrice = (TextView) itemView.findViewById(R.id.cart_product_price);
         }
 
         public void setValues(Product p){
-            this.mCartProductName.setText(p.getTitle());
-            this.mCartProductSeller.setText(p.getSeller());
+            mCartProductName.setText(p.getTitle());
+            mCartProductSeller.setText(p.getSeller());
+            mCartProductPrice.setText(p.getPrice());
             Picasso.with(this.mCartProductImage.getContext()).load(p.getThumbnailHd()).into(this.mCartProductImage);
         }
     }
