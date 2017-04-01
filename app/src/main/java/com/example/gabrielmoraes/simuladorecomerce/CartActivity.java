@@ -1,5 +1,6 @@
 package com.example.gabrielmoraes.simuladorecomerce;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -50,7 +51,7 @@ public class CartActivity extends AppCompatActivity implements MVP.CartViewOp {
 
         mCartPresenter.setView(this);
         if (getIntent() != null){
-            ArrayList<Product> l = getIntent().getParcelableArrayListExtra("CART_PRODUCTS");
+            ArrayList<Product> l = getIntent().getParcelableArrayListExtra(MVP.PresenterOp.BUNDLE_KEY);
             mCartPresenter.setCartProducts(l);
             mEmptyCartList.setVisibility(View.GONE);
 
@@ -69,7 +70,19 @@ public class CartActivity extends AppCompatActivity implements MVP.CartViewOp {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        //return presenter.onOptionsItemSelected(item);
-        return true;
+        return mCartPresenter.onOptionsItemSelected(item);
+
+    }
+
+    @Override
+    public void showPaymentActivity(Bundle b) {
+        Intent i = new Intent(this,PaymentActivity.class);
+        i.putExtras(b);
+        startActivity(i);
+    }
+
+    @Override
+    public boolean callSuperOnOptionItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 }

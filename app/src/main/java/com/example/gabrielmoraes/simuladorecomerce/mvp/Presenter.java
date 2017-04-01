@@ -50,7 +50,7 @@ public class Presenter implements MVP.PresenterOp {
         switch (item.getItemId()) {
             case R.id.cart_menu_button:
                 Bundle b = new Bundle();
-                b.putParcelableArrayList("CART_PRODUCTS",mCartProductList);
+                b.putParcelableArrayList(BUNDLE_KEY,mCartProductList);
                 mViewOp.showCartActivity(b);
                 return true;
             default:
