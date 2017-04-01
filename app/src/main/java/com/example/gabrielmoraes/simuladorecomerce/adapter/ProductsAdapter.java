@@ -69,6 +69,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
         public void setDados(Product p){
             this.mProductNameTextView.setText(p.getTitle());
             this.mSellerNameTextView.setText(p.getSeller());
+            this.mPriceTextView.setText(p.getPrice());
             Picasso.with(mProductPhotoImageView.getContext()).load(p.getThumbnailHd()).into(mProductPhotoImageView);
         }
     }

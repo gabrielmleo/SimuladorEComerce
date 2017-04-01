@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Simulador Ecomerce</string>
+    <string name="cart_activity_name">Meu carrinho</string>
+
+    <string name="buy_button_text">comprar</string>
+    <string name="cart_menu_text">carrinho</string>
 </resources>

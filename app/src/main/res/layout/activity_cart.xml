@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
+    android:id="@+id/activity_cart"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context="com.example.gabrielmoraes.simuladorecomerce.MainActivity">
-
+    tools:context="com.example.gabrielmoraes.simuladorecomerce.CartActivity">
     <android.support.v7.widget.Toolbar
-        android:id="@+id/tb_main"
+        android:id="@+id/tb_cart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
@@ -16,10 +15,5 @@
         android:layout_alignParentTop="true"
         android:elevation="4dp"
         />
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/my_recycler_view"
-        android:scrollbars="vertical"
-        android:layout_below="@id/tb_main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+
 </RelativeLayout>

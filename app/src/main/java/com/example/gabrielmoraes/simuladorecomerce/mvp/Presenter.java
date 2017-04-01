@@ -1,5 +1,8 @@
 package com.example.gabrielmoraes.simuladorecomerce.mvp;
 
+import android.view.MenuItem;
+
+import com.example.gabrielmoraes.simuladorecomerce.R;
 import com.example.gabrielmoraes.simuladorecomerce.domain.Product;
 import com.example.gabrielmoraes.simuladorecomerce.domain.ProductsRepositoryList;
 
@@ -36,6 +39,17 @@ public class Presenter implements MVP.PresenterOp {
         this.mProductList.clear();
         this.mProductList.addAll(mList);
         this.mViewOp.updateProductsList();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.cart_menu_button:
+                mViewOp.showCartActivity();
+                return true;
+            default:
+                return mViewOp.callSuperOnOptionItemSelected(item);
+        }
     }
 
 

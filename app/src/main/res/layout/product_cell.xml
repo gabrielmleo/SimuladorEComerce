@@ -3,34 +3,40 @@
     xmlns:app="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="16dp">
+    android:layout_height="wrap_content">
     <!-- A CardView that contains a TextView -->
     <android.support.v7.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view"
         android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        card_view:cardCornerRadius="4dp">
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="2dp"
+        card_view:cardElevation="4dp"
+        card_view:cardUseCompatPadding="true">
 
         <RelativeLayout
+            android:background="@android:color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
                 android:id="@+id/produto_image"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"/>
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_alignParentTop="true"/>
             <TextView
                 android:id="@+id/nome_produto_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/produto_image"
+                android:textColor="@color/primaryTextColor"
                 android:layout_alignParentLeft="true"/>
             <TextView
                 android:id="@+id/nome_loja_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/secondaryTextColor"
                 android:layout_below="@id/nome_produto_text"
                 android:layout_alignLeft="@id/nome_produto_text"
                 />
@@ -38,9 +44,20 @@
                 android:id="@+id/preco_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/secondaryTextColor"
                 android:layout_toRightOf="@id/nome_produto_text"
                 android:layout_alignTop="@id/nome_produto_text"
                 android:layout_alignParentRight="true"/>
+            <Button
+                android:id="@+id/buy_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/nome_loja_text"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:text="@string/buy_button_text"
+                android:textColor="@color/colorAccent"
+                style="?android:attr/borderlessButtonStyle"/>
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 
