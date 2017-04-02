@@ -3,7 +3,9 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="text_List_alignment_left">56dp</dimen>
-
-
+    <dimen name="card_primary_text_top_margin">16dp</dimen>
+    <dimen name="multilines_primary_text_font_size">16sp</dimen>
+    <dimen name="multilines_secondary_text_font_size">14sp</dimen>
+    <dimen name="price_text_size">20sp</dimen>
     <dimen name="block_separate_payment_screen">32dp</dimen>
 </resources>
