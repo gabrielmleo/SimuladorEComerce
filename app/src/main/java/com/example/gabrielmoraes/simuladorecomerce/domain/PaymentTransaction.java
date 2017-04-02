@@ -1,42 +1,46 @@
 package com.example.gabrielmoraes.simuladorecomerce.domain;
 
 
+import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Select;
+
+import java.util.List;
+
 /**
  * Created by gabri on 02/04/2017.
  */
+@Table(name = "PaymentsTransaction")
+public class PaymentTransaction extends Model {
 
-public class PaymentTransaction {
+    @Column(name = "TransactionValue")
+    public String transactionValue;
 
-    String transactionValue;
-    String creditCardLastDigits;
-    String transactionDate;
-    String creditCardOwnerName;
+    @Column(name = "CreditCardLastDigits")
+    public String creditCardLastDigits;
+
+    @Column(name = "TransactionDate")
+    public String transactionDate;
+
+    @Column(name = "CreditCardOwnerName")
+    public String creditCardOwnerName;
 
     public PaymentTransaction(){
-
+        super();
     }
 
     public PaymentTransaction(String value, String cardDigits,String date, String owner){
+        super();
         transactionValue = value;
         creditCardLastDigits = cardDigits;
         transactionDate = date;
         creditCardOwnerName = owner;
 
     }
-
-    public String getTransactionValue() {
-        return transactionValue;
-    }
-
-    public String getCreditCardLastDigits() {
-        return creditCardLastDigits;
-    }
-
-    public String getTransactionDate() {
-        return transactionDate;
-    }
-
-    public String getCreditCardOwnerName() {
-        return creditCardOwnerName;
+    public static List<PaymentTransaction> getAll() {
+        return new Select()
+                .from(PaymentTransaction.class)
+                .execute();
     }
 }

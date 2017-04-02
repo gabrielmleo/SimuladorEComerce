@@ -64,10 +64,10 @@ public class HistoryTransactionsAdapter extends RecyclerView.Adapter<HistoryTran
 
 
         public void setValues(PaymentTransaction pTransaction){
-            transactionOwner.setText(pTransaction.getCreditCardOwnerName());
-            transactionCreditCard.setText(pTransaction.getCreditCardLastDigits());
-            transactionValue.setText(pTransaction.getTransactionValue());
-            transactionDate.setText(pTransaction.getTransactionDate());
+            transactionOwner.setText(pTransaction.creditCardOwnerName);
+            transactionCreditCard.setText(pTransaction.creditCardLastDigits);
+            transactionValue.setText(pTransaction.transactionValue);
+            transactionDate.setText(pTransaction.transactionDate);
         }
     }
 }

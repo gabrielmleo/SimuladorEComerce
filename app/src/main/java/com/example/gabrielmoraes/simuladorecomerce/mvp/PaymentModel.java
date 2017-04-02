@@ -42,7 +42,7 @@ public class PaymentModel implements MVP.PaymentModelOp {
         String dateFormated = dFormat.format(date);
 
         PaymentTransaction transaction = new PaymentTransaction(mPresenterOp.getAmountValue(),creditCardNumber.substring(12,15),dateFormated,creditCardOwner);
-        //transaction.save();
+        transaction.save();
 
     }
 

@@ -19,7 +19,7 @@ public class TransactionModel implements MVP.TransactionModelOp {
     @Override
     public List<PaymentTransaction> getTransactionList() {
 
-        List<PaymentTransaction> transactionsList = PaymentTransaction.listAll(PaymentTransaction.class);
+        List<PaymentTransaction> transactionsList = PaymentTransaction.getAll();
 
         return transactionsList;
 

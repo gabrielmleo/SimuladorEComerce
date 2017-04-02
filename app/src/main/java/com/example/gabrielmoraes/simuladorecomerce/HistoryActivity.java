@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 import com.example.gabrielmoraes.simuladorecomerce.adapter.HistoryTransactionsAdapter;
 import com.example.gabrielmoraes.simuladorecomerce.mvp.MVP;
@@ -17,11 +19,14 @@ public class HistoryActivity extends AppCompatActivity implements MVP.Transactio
     private MVP.TransactionPresenterOp mPresenter;
     private RecyclerView.LayoutManager mLayoutManager;
     private HistoryTransactionsAdapter mAdapter;
+    private RelativeLayout emptyHistoryView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
+        emptyHistoryView = (RelativeLayout) findViewById(R.id.empty_history_view);
+        emptyHistoryView.setVisibility(View.GONE);
 
 
         mToolBar = (Toolbar) findViewById(R.id.tb_history);
@@ -42,6 +47,7 @@ public class HistoryActivity extends AppCompatActivity implements MVP.Transactio
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         mAdapter = new HistoryTransactionsAdapter(this,mPresenter.getTransactionList());
+        mRecyclerView.setAdapter(mAdapter);
 
 
     }
