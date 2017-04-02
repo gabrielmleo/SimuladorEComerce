@@ -50,6 +50,10 @@ public class Presenter implements MVP.PresenterOp {
                 b.putParcelableArrayList(BUNDLE_KEY,mCartProductList);
                 mViewOp.showCartActivity(b);
                 return true;
+
+            case R.id.history_menu_button:
+                mViewOp.showHistoryActivity();
+                return true;
             default:
                 return mViewOp.callSuperOnOptionItemSelected(item);
         }

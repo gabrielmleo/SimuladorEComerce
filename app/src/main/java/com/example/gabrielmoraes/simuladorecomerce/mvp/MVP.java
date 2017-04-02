@@ -16,6 +16,7 @@ public interface MVP {
     public interface ViewOp{
         public void updateProductsList();
         public void showCartActivity(Bundle p);
+        public void showHistoryActivity();
         public boolean callSuperOnOptionItemSelected(MenuItem item);
         public void addProductToCart(Product p);
     }

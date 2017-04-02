@@ -78,6 +78,11 @@ public class MainActivity extends AppCompatActivity implements MVP.ViewOp{
     }
 
     @Override
+    public void showHistoryActivity() {
+        startActivity(new Intent(this,HistoryActivity.class));
+    }
+
+    @Override
     public boolean callSuperOnOptionItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
     }
