@@ -36,18 +36,13 @@ public class PaymentModel implements MVP.PaymentModelOp {
     }
 
     private void createNewTransaction(){
-        PaymentTransaction transaction = new PaymentTransaction();
-        transaction.setCreditCardOwnerName(creditCardOwner);
-
 
         DateFormat dFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
+        String dateFormated = dFormat.format(date);
 
-        transaction.setTransactionDate(dFormat.format(date));
-        transaction.setCreditCardLastDigits(creditCardNumber.substring(12,15));
-        transaction.setTransactionValue(mPresenterOp.getAmountValue());
-
-        transaction.save();
+        PaymentTransaction transaction = new PaymentTransaction(mPresenterOp.getAmountValue(),creditCardNumber.substring(12,15),dateFormated,creditCardOwner);
+        //transaction.save();
 
     }
 
