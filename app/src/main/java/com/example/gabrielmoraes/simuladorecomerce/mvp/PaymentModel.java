@@ -3,11 +3,15 @@ package com.example.gabrielmoraes.simuladorecomerce.mvp;
 import android.util.Log;
 
 import com.example.gabrielmoraes.simuladorecomerce.domain.PaymentData;
+import com.example.gabrielmoraes.simuladorecomerce.domain.PaymentTransaction;
 import com.example.gabrielmoraes.simuladorecomerce.domain.Product;
 import com.example.gabrielmoraes.simuladorecomerce.network.ProductPaymentService;
 import com.example.gabrielmoraes.simuladorecomerce.network.ProductRepositoryService;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,6 +40,22 @@ public class PaymentModel implements MVP.PaymentModelOp {
         retrofitConfiguration();
     }
 
+    private void createNewTransaction(){
+        PaymentTransaction transaction = new PaymentTransaction();
+        transaction.setCreditCardOwnerName(creditCardOwner);
+
+
+        DateFormat dFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+
+        transaction.setTransactionDate(dFormat.format(date));
+        transaction.setCreditCardLastDigits(creditCardNumber.substring(12,15));
+        transaction.setTransactionValue(mPresenterOp.getAmountValue());
+
+        transaction.save();
+
+    }
+
 
     @Override
     public void requestPayment() {
@@ -50,7 +70,8 @@ public class PaymentModel implements MVP.PaymentModelOp {
                     //mPresenterOp.updateProductsList(response.body());
                 }
                 else{
-                    //mPresenterOp.updateProductsList(response.body());
+                        createNewTransaction();
+
                 }
             }
 

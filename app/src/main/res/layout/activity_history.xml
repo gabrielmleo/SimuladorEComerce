@@ -30,5 +30,13 @@
             android:textColor="@color/primaryTextColor"
             android:text="@string/empty_history_text"/>
     </RelativeLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_history"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_below="@id/tb_history"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>

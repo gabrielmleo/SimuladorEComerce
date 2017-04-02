@@ -3,9 +3,11 @@ package com.example.gabrielmoraes.simuladorecomerce.mvp;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.gabrielmoraes.simuladorecomerce.domain.PaymentTransaction;
 import com.example.gabrielmoraes.simuladorecomerce.domain.Product;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by gabri on 28/03/2017.
@@ -76,5 +78,18 @@ public interface MVP {
         public String getCreditCardYear();
         public void showToast(String message);
 
+    }
+
+    public interface TransactionViewOp{
+
+    }
+
+    public interface TransactionPresenterOp{
+        public List<PaymentTransaction> getTransactionList();
+        public void setView(MVP.TransactionViewOp viewOp);
+    }
+
+    public interface TransactionModelOp{
+        public List<PaymentTransaction> getTransactionList();
     }
 }

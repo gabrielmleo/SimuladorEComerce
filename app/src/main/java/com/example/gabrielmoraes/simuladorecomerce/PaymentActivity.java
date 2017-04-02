@@ -66,7 +66,7 @@ public class PaymentActivity extends AppCompatActivity implements MVP.PaymentVie
     }
 
     public void confirmPayment(View v){
-
+        mPresenter.confirmPayment();
     }
 
     @Override
