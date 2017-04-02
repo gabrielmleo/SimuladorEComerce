@@ -44,6 +44,8 @@ public class PaymentActivity extends AppCompatActivity implements MVP.PaymentVie
             mPresenter = new PaymentPresenter();
         }
 
+        mPresenter.setView(this);
+
         if (getIntent() != null){
             ArrayList<Product> l = getIntent().getParcelableArrayListExtra(MVP.CartPresenterOp.BUNDLE_PAYMENT_KEY);
             mPresenter.setCartProducts(l);

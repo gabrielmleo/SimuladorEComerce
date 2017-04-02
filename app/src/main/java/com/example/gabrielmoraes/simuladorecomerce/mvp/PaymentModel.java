@@ -1,16 +1,11 @@
 package com.example.gabrielmoraes.simuladorecomerce.mvp;
 
-import android.util.Log;
-
 import com.example.gabrielmoraes.simuladorecomerce.domain.PaymentData;
 import com.example.gabrielmoraes.simuladorecomerce.domain.PaymentTransaction;
-import com.example.gabrielmoraes.simuladorecomerce.domain.Product;
 import com.example.gabrielmoraes.simuladorecomerce.network.ProductPaymentService;
-import com.example.gabrielmoraes.simuladorecomerce.network.ProductRepositoryService;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 import retrofit2.Call;
@@ -56,9 +51,20 @@ public class PaymentModel implements MVP.PaymentModelOp {
 
     }
 
+    public void fillPaymentData(){
+        mPaymentData.setCard_holder_name(creditCardOwner);
+        mPaymentData.setCard_number(creditCardNumber);
+
+        String expireDateConcat = creditCardMonth + creditCardYear.substring(2);
+        mPaymentData.setExp_date(expireDateConcat);
+        mPaymentData.setCvv(creditCardCvv);
+        mPaymentData.setValue(mPresenterOp.getAmountValue());
+    }
 
     @Override
     public void requestPayment() {
+
+        fillPaymentData();
 
         ProductPaymentService service = this.retrofit.create(ProductPaymentService.class);
         Call<PaymentData> requestRepositoryList = service.newPayment(mPaymentData);
@@ -70,7 +76,9 @@ public class PaymentModel implements MVP.PaymentModelOp {
                     //mPresenterOp.updateProductsList(response.body());
                 }
                 else{
+                    response.code();
                         createNewTransaction();
+                        mPresenterOp.showToast("pagamento efetuado com sucesso");
 
                 }
             }

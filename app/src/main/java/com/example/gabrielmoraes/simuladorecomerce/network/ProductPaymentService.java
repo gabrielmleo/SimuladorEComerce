@@ -12,7 +12,7 @@ import retrofit2.http.POST;
 
 public interface ProductPaymentService {
 
-    String BASE_URL = "http://ecommerce.apiblueprint.org/";
+    String BASE_URL = "http://private-38aa7-ecomercepayment.apiary-mock.com/";
 
     @POST("payment")
     Call<PaymentData> newPayment(@Body PaymentData payment);

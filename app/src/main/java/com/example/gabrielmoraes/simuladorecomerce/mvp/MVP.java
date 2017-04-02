@@ -57,6 +57,7 @@ public interface MVP {
         public void setCartProducts(ArrayList<Product> list);
         public String getAmountValue();
         public void confirmPayment();
+        public void showToast(String message);
     }
 
     public interface PaymentModelOp{

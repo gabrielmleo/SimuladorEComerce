@@ -5,11 +5,16 @@ package com.example.gabrielmoraes.simuladorecomerce.domain;
  */
 
 public class PaymentData {
-    private String card_holder_name;
-    private String card_number;
-    private String creditCardMonthExpire;
-    private String value;
-    private String cvv;
+    String card_number;
+    String value;
+    String cvv;
+    String card_holder_name;
+    String exp_date;
+
+
+    public PaymentData(){
+
+    }
 
     public String getValue() {
         return value;
@@ -35,12 +40,12 @@ public class PaymentData {
         this.card_number = card_number;
     }
 
-    public String getCreditCardMonthExpire() {
-        return creditCardMonthExpire;
+    public String getExp_date() {
+        return exp_date;
     }
 
-    public void setCreditCardMonthExpire(String creditCardMonthExpire) {
-        this.creditCardMonthExpire = creditCardMonthExpire;
+    public void setExp_date(String exp_date) {
+        this.exp_date = exp_date;
     }
 
     public String getCvv() {

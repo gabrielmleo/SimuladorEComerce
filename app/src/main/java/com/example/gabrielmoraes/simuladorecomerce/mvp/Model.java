@@ -38,7 +38,7 @@ public class Model implements MVP.ModelOp {
             @Override
             public void onResponse(Call<ArrayList<Product>> call, Response<ArrayList<Product>> response) {
                 if (!response.isSuccessful()){
-                    mPresenterOp.updateProductsList(response.body());
+                    //mPresenterOp.updateProductsList(response.body());
                 }
                 else{
                     mPresenterOp.updateProductsList(response.body());

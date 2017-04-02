@@ -73,4 +73,9 @@ public class PaymentPresenter implements MVP.PaymentPresenterOp {
 
     }
 
+    @Override
+    public void showToast(String message) {
+        mView.showToast(message);
+    }
+
 }
