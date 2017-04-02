@@ -3,8 +3,6 @@ package com.example.gabrielmoraes.simuladorecomerce;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
@@ -14,11 +12,8 @@ import android.view.MenuItem;
 
 import com.example.gabrielmoraes.simuladorecomerce.adapter.ProductsAdapter;
 import com.example.gabrielmoraes.simuladorecomerce.domain.Product;
-import com.example.gabrielmoraes.simuladorecomerce.domain.ProductsRepositoryList;
 import com.example.gabrielmoraes.simuladorecomerce.mvp.MVP;
 import com.example.gabrielmoraes.simuladorecomerce.mvp.Presenter;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements MVP.ViewOp{
 

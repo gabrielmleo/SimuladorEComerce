@@ -3,7 +3,6 @@ package com.example.gabrielmoraes.simuladorecomerce.mvp;
 import android.util.Log;
 
 import com.example.gabrielmoraes.simuladorecomerce.domain.Product;
-import com.example.gabrielmoraes.simuladorecomerce.domain.ProductsRepositoryList;
 import com.example.gabrielmoraes.simuladorecomerce.network.ProductRepositoryService;
 
 import java.util.ArrayList;

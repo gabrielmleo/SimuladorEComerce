@@ -1,7 +1,6 @@
 package com.example.gabrielmoraes.simuladorecomerce.network;
 
 import com.example.gabrielmoraes.simuladorecomerce.domain.Product;
-import com.example.gabrielmoraes.simuladorecomerce.domain.ProductsRepositoryList;
 
 import java.util.ArrayList;
 
@@ -14,7 +13,7 @@ import retrofit2.http.GET;
 
 public interface ProductRepositoryService {
 
-    public static final String BASE_URL = "https://raw.githubusercontent.com/stone-pagamentos/desafio-mobile/master/";
+    String BASE_URL = "https://raw.githubusercontent.com/stone-pagamentos/desafio-mobile/master/";
 
     @GET("products.json")
     Call<ArrayList<Product>> listProducts();

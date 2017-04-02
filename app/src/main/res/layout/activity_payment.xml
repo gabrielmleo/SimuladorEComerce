@@ -30,7 +30,9 @@
             android:layout_alignParentStart="true"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin">
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            app:counterEnabled="true"
+            app:counterMaxLength="16">
 
             <EditText
                 android:id="@+id/credit_card_number"
@@ -84,14 +86,17 @@
                 android:id="@+id/credit_card_month_input"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:counterEnabled="true"
+                app:counterMaxLength="2">
 
                 <EditText
                     android:id="@+id/credit_card_month"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
-                    android:hint="@string/month_hint"/>
+                    android:hint="@string/month_hint"
+                    />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -99,7 +104,9 @@
                 android:id="@+id/credit_card_year_input"
                 android:layout_width="0dp"
                 android:layout_weight="2"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:counterEnabled="true"
+                app:counterMaxLength="4">
 
                 <EditText
                     android:id="@+id/credit_card_year"
@@ -114,7 +121,9 @@
                 android:id="@+id/credit_card_cvv_input"
                 android:layout_width="0dp"
                 android:layout_weight="2"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:counterEnabled="true"
+                app:counterMaxLength="3">
 
                 <EditText
                     android:id="@+id/credit_card_cvv"
@@ -142,7 +151,8 @@
             android:layout_height="40dp"
             android:layout_alignParentBottom="true"
             android:layout_below="@id/amount_value"
-            android:text="@string/confirm_payment_button_text"/>
+            android:text="@string/confirm_payment_button_text"
+            android:onClick="confirmPayment"/>
     </RelativeLayout>
 
 

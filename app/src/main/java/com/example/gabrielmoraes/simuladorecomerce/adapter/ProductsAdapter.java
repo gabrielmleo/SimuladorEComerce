@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.example.gabrielmoraes.simuladorecomerce.MainActivity;
 import com.example.gabrielmoraes.simuladorecomerce.R;
 import com.example.gabrielmoraes.simuladorecomerce.domain.Product;
-import com.example.gabrielmoraes.simuladorecomerce.domain.ProductsRepositoryList;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

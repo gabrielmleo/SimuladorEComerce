@@ -1,12 +1,9 @@
 package com.example.gabrielmoraes.simuladorecomerce.mvp;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.gabrielmoraes.simuladorecomerce.domain.Product;
-import com.example.gabrielmoraes.simuladorecomerce.domain.ProductsRepositoryList;
 
 import java.util.ArrayList;
 
@@ -55,14 +52,28 @@ public interface MVP {
     public interface PaymentPresenterOp{
         public void setView(PaymentViewOp view);
         public void setCartProducts(ArrayList<Product> list);
-        public void setContext(Context c);
+        public String getAmountValue();
+        public void confirmPayment();
     }
 
     public interface PaymentModelOp{
+        public void requestPayment();
+        public void retrofitConfiguration();
+        public void setCreditCardOwnerName(String name);
+        public void setCreditCardNumber(String number);
+        public void setCreditCardCvv(String cvv);
+        public void setCreditCardMonth(String month);
+        public void setCreditCardYear(String year);
 
     }
 
     public interface PaymentViewOp{
+        public String getCreditCardOwnerName();
+        public String getCreditCardNumber();
+        public String getCreditCardCvv();
+        public String getCreditCardMonth();
+        public String getCreditCardYear();
+        public void showToast(String message);
 
     }
 }

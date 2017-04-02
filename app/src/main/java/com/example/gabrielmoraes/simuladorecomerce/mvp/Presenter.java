@@ -1,13 +1,10 @@
 package com.example.gabrielmoraes.simuladorecomerce.mvp;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.gabrielmoraes.simuladorecomerce.CartActivity;
 import com.example.gabrielmoraes.simuladorecomerce.R;
 import com.example.gabrielmoraes.simuladorecomerce.domain.Product;
-import com.example.gabrielmoraes.simuladorecomerce.domain.ProductsRepositoryList;
 
 import java.util.ArrayList;
 
