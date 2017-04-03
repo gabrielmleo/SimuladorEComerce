@@ -64,5 +64,10 @@ public class Presenter implements MVP.PresenterOp {
         mCartProductList.add(p);
     }
 
+    @Override
+    public void clearCartProducts() {
+        mCartProductList.clear();
+    }
+
 
 }

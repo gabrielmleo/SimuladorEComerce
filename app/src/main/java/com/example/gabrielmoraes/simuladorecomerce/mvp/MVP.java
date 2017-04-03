@@ -25,11 +25,13 @@ public interface MVP {
 
     public interface PresenterOp{
         String BUNDLE_KEY = "CART_PRODUCTS";
+        int CART_ACTIVITY_REQUEST_CODE = 2;
         public ArrayList<Product> getProducts();
         public void retrieveProducts();
         public void updateProductsList(ArrayList<Product> mList);
         public boolean onOptionsItemSelected(MenuItem item);
         public void addProductToCart(Product p);
+        public void clearCartProducts();
 
     }
 

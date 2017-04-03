@@ -65,6 +65,17 @@ public class MainActivity extends AppCompatActivity implements MVP.ViewOp{
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        if (requestCode == MVP.PresenterOp.CART_ACTIVITY_REQUEST_CODE) {
+            // Make sure the request was successful
+            if (resultCode == MVP.PaymentPresenterOp.PAYMENT_SUCCESS_RESULT_CODE) {
+                presenter.clearCartProducts();
+            }
+        }
+    }
+
+    @Override
     public void updateProductsList() {
         this.mAdapter.notifyDataSetChanged();
     }
@@ -73,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements MVP.ViewOp{
     public void showCartActivity(Bundle b) {
         Intent i = new Intent(this,CartActivity.class);
         i.putExtras(b);
-        startActivity(i);
+        startActivityForResult(i,MVP.PresenterOp.CART_ACTIVITY_REQUEST_CODE);
 
     }
 

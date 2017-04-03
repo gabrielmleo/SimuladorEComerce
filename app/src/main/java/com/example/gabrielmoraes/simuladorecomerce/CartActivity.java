@@ -102,6 +102,8 @@ public class CartActivity extends AppCompatActivity implements MVP.CartViewOp {
             // Make sure the request was successful
             if (resultCode == MVP.PaymentPresenterOp.PAYMENT_SUCCESS_RESULT_CODE) {
                 mCartPresenter.clearData();
+                setResult(MVP.PaymentPresenterOp.PAYMENT_SUCCESS_RESULT_CODE);
+                finish();
             }
         }
     }
