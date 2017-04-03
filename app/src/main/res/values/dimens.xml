@@ -11,4 +11,5 @@
     <dimen name="block_separate_payment_screen">32dp</dimen>
     <dimen name="button_height">50dp</dimen>
     <dimen name="payment_screen_top_space">42dp</dimen>
+    <dimen name="divider_height">1dp</dimen>
 </resources>

@@ -41,7 +41,7 @@ public class PaymentModel implements MVP.PaymentModelOp {
         Date date = new Date();
         String dateFormated = dFormat.format(date);
 
-        PaymentTransaction transaction = new PaymentTransaction(mPresenterOp.getAmountValue(),creditCardNumber.substring(12,15),dateFormated,creditCardOwner);
+        PaymentTransaction transaction = new PaymentTransaction(mPresenterOp.getAmountValue(),creditCardNumber.substring(11,15),dateFormated,creditCardOwner);
         transaction.save();
 
     }
