@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Simulador Ecomerce</string>
+    <string name="app_name">Simulador E-commerce</string>
     <string name="cart_activity_name">Meu carrinho</string>
     <string name="payment_activity_name">Dados do pagamento</string>
     <string name="history_activity_name">Histórico de pagamentos</string>
@@ -10,6 +10,8 @@
     <string name="cart_finish">finalizar compra</string>
     <string name="empty_cart_text">Seu carrinho está vazio.</string>
     <string name="empty_history_text">Nenhum pagamento realizado.</string>
+
+    <string name="payment_amount_placeholder">Total a pagar</string>
 
     <string name="credit_card_hint">Número do cartão</string>
     <string name="credit_card_owner_name_hint">Nome</string>

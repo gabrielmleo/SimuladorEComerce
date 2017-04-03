@@ -18,6 +18,7 @@ public class CartPresenter implements MVP.CartPresenterOp {
 
     private ArrayList<Product> mCartProductsList = new ArrayList<>();
     private MVP.CartViewOp mView;
+    private boolean showMenu = true;
 
     @Override
     public void setView(MVP.CartViewOp view) {
@@ -47,5 +48,24 @@ public class CartPresenter implements MVP.CartPresenterOp {
             default:
                 return mView.callSuperOnOptionItemSelected(item);
         }
+    }
+
+    @Override
+    public void checkEmptyList(ArrayList<Product> l) {
+        if (l.size()!=0){
+            setCartProducts(l);
+            mView.setEmptyListVisibility(View.GONE);
+            showMenu = true;
+        }
+        else{
+            mView.setEmptyListVisibility(View.VISIBLE);
+            showMenu = false;
+        }
+        mView.updateMenuItem();
+    }
+
+    @Override
+    public boolean mustShowMenuItem() {
+        return showMenu;
     }
 }

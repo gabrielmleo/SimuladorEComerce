@@ -52,8 +52,7 @@ public class CartActivity extends AppCompatActivity implements MVP.CartViewOp {
         mCartPresenter.setView(this);
         if (getIntent() != null){
             ArrayList<Product> l = getIntent().getParcelableArrayListExtra(MVP.PresenterOp.BUNDLE_KEY);
-            mCartPresenter.setCartProducts(l);
-            mEmptyCartList.setVisibility(View.GONE);
+            mCartPresenter.checkEmptyList(l);
 
         }
 
@@ -66,6 +65,19 @@ public class CartActivity extends AppCompatActivity implements MVP.CartViewOp {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.cart_tb_menu, menu);
         return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        if (menu!=null){
+            if (mCartPresenter.mustShowMenuItem()){
+                menu.getItem(0).setVisible(true);
+            }else{
+                menu.getItem(0).setVisible(false);
+            }
+        }
+
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
@@ -84,5 +96,15 @@ public class CartActivity extends AppCompatActivity implements MVP.CartViewOp {
     @Override
     public boolean callSuperOnOptionItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void setEmptyListVisibility(int i) {
+        mEmptyCartList.setVisibility(i);
+    }
+
+    @Override
+    public void updateMenuItem() {
+        invalidateOptionsMenu();
     }
 }

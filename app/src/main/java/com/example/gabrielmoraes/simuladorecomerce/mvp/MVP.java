@@ -41,6 +41,8 @@ public interface MVP {
     public interface CartViewOp{
         public void showPaymentActivity(Bundle b);
         public boolean callSuperOnOptionItemSelected(MenuItem item);
+        public void setEmptyListVisibility(int i);
+        public void updateMenuItem();
 
     }
 
@@ -50,6 +52,8 @@ public interface MVP {
         public void setCartProducts(ArrayList<Product> list);
         public ArrayList<Product> getCartProductsList();
         public boolean onOptionsItemSelected(MenuItem item);
+        public void checkEmptyList(ArrayList<Product> l);
+        public boolean mustShowMenuItem();
     }
 
     public interface PaymentPresenterOp{
