@@ -11,7 +11,7 @@
     <string name="empty_cart_text">Seu carrinho está vazio.</string>
     <string name="empty_history_text">Nenhum pagamento realizado.</string>
 
-    <string name="payment_amount_placeholder">Total a pagar</string>
+    <string name="payment_amount_placeholder">TOTAL A PAGAR:</string>
 
     <string name="credit_card_hint">Número do cartão</string>
     <string name="credit_card_owner_name_hint">Nome</string>

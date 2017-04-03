@@ -61,21 +61,28 @@ public class PaymentPresenter implements MVP.PaymentPresenterOp {
 
         if (error){
             mView.showToast(errorMessage);
+        }else{
+            mModel.setCreditCardCvv(mView.getCreditCardCvv());
+            mModel.setCreditCardOwnerName(mView.getCreditCardOwnerName());
+            mModel.setCreditCardMonth(mView.getCreditCardMonth());
+            mModel.setCreditCardYear(mView.getCreditCardYear());
+            mModel.setCreditCardNumber(mView.getCreditCardNumber());
+
+            mModel.requestPayment();
         }
 
-        mModel.setCreditCardCvv(mView.getCreditCardCvv());
-        mModel.setCreditCardOwnerName(mView.getCreditCardOwnerName());
-        mModel.setCreditCardMonth(mView.getCreditCardMonth());
-        mModel.setCreditCardYear(mView.getCreditCardYear());
-        mModel.setCreditCardNumber(mView.getCreditCardNumber());
 
-        mModel.requestPayment();
 
     }
 
     @Override
     public void showToast(String message) {
         mView.showToast(message);
+    }
+
+    @Override
+    public void paymentSuccess() {
+        mView.paymentSuccess();
     }
 
 }

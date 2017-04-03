@@ -52,7 +52,8 @@ public class CartActivity extends AppCompatActivity implements MVP.CartViewOp {
         mCartPresenter.setView(this);
         if (getIntent() != null){
             ArrayList<Product> l = getIntent().getParcelableArrayListExtra(MVP.PresenterOp.BUNDLE_KEY);
-            mCartPresenter.checkEmptyList(l);
+            mCartPresenter.setCartProducts(l);
+            mCartPresenter.checkEmptyList();
 
         }
 
@@ -90,7 +91,19 @@ public class CartActivity extends AppCompatActivity implements MVP.CartViewOp {
     public void showPaymentActivity(Bundle b) {
         Intent i = new Intent(this,PaymentActivity.class);
         i.putExtras(b);
-        startActivity(i);
+        //startActivity(i);
+        startActivityForResult(i,MVP.PaymentPresenterOp.PAYMENT_ACTIVITY_REQUEST_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        if (requestCode == MVP.PaymentPresenterOp.PAYMENT_ACTIVITY_REQUEST_CODE) {
+            // Make sure the request was successful
+            if (resultCode == MVP.PaymentPresenterOp.PAYMENT_SUCCESS_RESULT_CODE) {
+                mCartPresenter.clearData();
+            }
+        }
     }
 
     @Override
@@ -106,5 +119,12 @@ public class CartActivity extends AppCompatActivity implements MVP.CartViewOp {
     @Override
     public void updateMenuItem() {
         invalidateOptionsMenu();
+    }
+
+    @Override
+    public void updateCartItens() {
+        mCartAdapter.notifyDataSetChanged();
+        mCartPresenter.checkEmptyList();
+
     }
 }

@@ -22,9 +22,9 @@
         android:layout_height="wrap_content"
         android:text="@string/payment_amount_placeholder"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/payment_screen_top_space"
         android:layout_below="@id/tb_payment"
-        android:textSize="@dimen/sub_header"
+        android:textSize="@dimen/payment_placeholder"
         android:textColor="@color/secondaryTextColor"
         android:fontFamily="sans-serif-condensed"
         />
@@ -34,9 +34,10 @@
         android:id="@+id/amount_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/tb_payment"
-        android:layout_marginTop="@dimen/payment_screen_top_space" />
+        android:layout_toRightOf="@id/amount_value_placeholder"
+        android:layout_alignTop="@id/amount_value_placeholder"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:textSize="@dimen/payment_placeholder"/>
 
     <View
         android:id="@+id/divider"

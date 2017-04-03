@@ -51,9 +51,8 @@ public class CartPresenter implements MVP.CartPresenterOp {
     }
 
     @Override
-    public void checkEmptyList(ArrayList<Product> l) {
-        if (l.size()!=0){
-            setCartProducts(l);
+    public void checkEmptyList() {
+        if (mCartProductsList.size()!=0){
             mView.setEmptyListVisibility(View.GONE);
             showMenu = true;
         }
@@ -67,5 +66,12 @@ public class CartPresenter implements MVP.CartPresenterOp {
     @Override
     public boolean mustShowMenuItem() {
         return showMenu;
+    }
+
+    @Override
+    public void clearData() {
+        mCartProductsList.clear();
+        mView.updateCartItens();
+
     }
 }

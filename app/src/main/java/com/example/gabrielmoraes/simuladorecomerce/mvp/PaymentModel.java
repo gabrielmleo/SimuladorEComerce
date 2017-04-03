@@ -71,10 +71,8 @@ public class PaymentModel implements MVP.PaymentModelOp {
                     //mPresenterOp.updateProductsList(response.body());
                 }
                 else{
-                    response.code();
-                        createNewTransaction();
-                        mPresenterOp.showToast("pagamento efetuado com sucesso");
-
+                     createNewTransaction();
+                    mPresenterOp.paymentSuccess();
                 }
             }
 

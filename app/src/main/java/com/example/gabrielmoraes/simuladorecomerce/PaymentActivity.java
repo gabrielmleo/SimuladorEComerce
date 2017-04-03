@@ -102,5 +102,11 @@ public class PaymentActivity extends AppCompatActivity implements MVP.PaymentVie
     public void showToast(String message) {
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void paymentSuccess() {
+        setResult(MVP.PaymentPresenterOp.PAYMENT_SUCCESS_RESULT_CODE);
+        finish();
+    }
 }
 

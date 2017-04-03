@@ -43,6 +43,7 @@ public interface MVP {
         public boolean callSuperOnOptionItemSelected(MenuItem item);
         public void setEmptyListVisibility(int i);
         public void updateMenuItem();
+        public void updateCartItens();
 
     }
 
@@ -52,16 +53,20 @@ public interface MVP {
         public void setCartProducts(ArrayList<Product> list);
         public ArrayList<Product> getCartProductsList();
         public boolean onOptionsItemSelected(MenuItem item);
-        public void checkEmptyList(ArrayList<Product> l);
+        public void checkEmptyList();
         public boolean mustShowMenuItem();
+        public void clearData();
     }
 
     public interface PaymentPresenterOp{
+        int PAYMENT_ACTIVITY_REQUEST_CODE = 1;
+        int PAYMENT_SUCCESS_RESULT_CODE = 21;
         public void setView(PaymentViewOp view);
         public void setCartProducts(ArrayList<Product> list);
         public String getAmountValue();
         public void confirmPayment();
         public void showToast(String message);
+        public void paymentSuccess();
     }
 
     public interface PaymentModelOp{
@@ -82,6 +87,7 @@ public interface MVP {
         public String getCreditCardMonth();
         public String getCreditCardYear();
         public void showToast(String message);
+        public void paymentSuccess();
 
     }
 
