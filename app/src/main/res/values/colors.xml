@@ -3,6 +3,7 @@
     <color name="colorPrimary">#FF9800</color>
     <color name="colorPrimaryDark">#F57C00</color>
     <color name="colorAccent">#42A5F5</color>
+    <color name="history_placeholder">#01579B</color>
     <color name="background">#F5F5F5</color>
     <color name="primaryTextColor">#212121</color>
     <color name="secondaryTextColor">#757575</color>

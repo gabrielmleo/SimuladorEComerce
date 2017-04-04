@@ -1,5 +1,7 @@
 package com.example.gabrielmoraes.simuladorecomerce.mvp;
 
+import android.view.View;
+
 import com.example.gabrielmoraes.simuladorecomerce.domain.PaymentData;
 import com.example.gabrielmoraes.simuladorecomerce.domain.PaymentTransaction;
 import com.example.gabrielmoraes.simuladorecomerce.network.ProductPaymentService;
@@ -64,11 +66,13 @@ public class PaymentModel implements MVP.PaymentModelOp {
         ProductPaymentService service = this.retrofit.create(ProductPaymentService.class);
         Call<PaymentData> requestRepositoryList = service.newPayment(mPaymentData);
 
+        mPresenterOp.showProgressBar(View.VISIBLE);
+
         requestRepositoryList.enqueue(new Callback<PaymentData>() {
             @Override
             public void onResponse(Call<PaymentData> call, Response<PaymentData> response) {
                 if (!response.isSuccessful()){
-                    //mPresenterOp.updateProductsList(response.body());
+                    mPresenterOp.paymentFailure();
                 }
                 else{
                     createNewTransaction();
@@ -78,10 +82,11 @@ public class PaymentModel implements MVP.PaymentModelOp {
 
             @Override
             public void onFailure(Call<PaymentData> call, Throwable t) {
-
-                //Log.i("AIAIAIAI0","AIAIAIAIAOOOOOPPP");
+                mPresenterOp.paymentFailure();
             }
         });
+
+        mPresenterOp.showProgressBar(View.GONE);
 
     }
 

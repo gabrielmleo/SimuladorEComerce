@@ -6,12 +6,24 @@
 
     <string name="buy_button_text">comprar</string>
     <string name="cart_menu_text">carrinho</string>
+
+
     <string name="history_menu_text">histórico de transações</string>
+    <string name="empty_history_text">Nenhum pagamento realizado.</string>
+    <string name="owner_name_placeholder">Nome:</string>
+    <string name="transaction_date_placeholder">Data da compra:</string>
+    <string name="credit_card_transaction_placeholder">Cartão:</string>
+    <string name="value_transaction">Valor:</string>
+
     <string name="cart_finish">finalizar compra</string>
     <string name="empty_cart_text">Seu carrinho está vazio.</string>
-    <string name="empty_history_text">Nenhum pagamento realizado.</string>
+
+    <string name="item__added_to_cart">O item foi adicionado ao carrinho.</string>
 
     <string name="payment_amount_placeholder">TOTAL A PAGAR:</string>
+    <string name="payment_success">Pagamento realizado com sucesso.</string>
+    <string name="payment_failure">Ocorreu um erro ao pagar, tente novamente.</string>
+    <string name="fields_incomplete">Preencha os campos corretamente.</string>
 
     <string name="credit_card_hint">Número do cartão</string>
     <string name="credit_card_owner_name_hint">Nome</string>

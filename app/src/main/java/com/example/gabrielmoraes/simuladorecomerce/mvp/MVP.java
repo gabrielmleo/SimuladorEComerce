@@ -21,6 +21,8 @@ public interface MVP {
         public void showHistoryActivity();
         public boolean callSuperOnOptionItemSelected(MenuItem item);
         public void addProductToCart(Product p);
+        public void showToast(String message);
+        public void showItemAddedMessage();
     }
 
     public interface PresenterOp{
@@ -69,6 +71,8 @@ public interface MVP {
         public void confirmPayment();
         public void showToast(String message);
         public void paymentSuccess();
+        public void paymentFailure();
+        public void showProgressBar(int visibility);
     }
 
     public interface PaymentModelOp{
@@ -90,6 +94,9 @@ public interface MVP {
         public String getCreditCardYear();
         public void showToast(String message);
         public void paymentSuccess();
+        public void paymentFailure();
+        public void showProgressBar(int visibility);
+        public String getFieldsErrorMessage();
 
     }
 

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ public class PaymentActivity extends AppCompatActivity implements MVP.PaymentVie
     private EditText creditCardYearExpire;
     private EditText creditCardCvv;
     private Button paymentButton;
+    private ProgressBar mProgressCircular;
     private TextView amountValue;
 
 
@@ -37,6 +39,7 @@ public class PaymentActivity extends AppCompatActivity implements MVP.PaymentVie
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         mToolBar = (Toolbar)findViewById(R.id.tb_payment);
+        mProgressCircular = (ProgressBar)findViewById(R.id.progress_circular);
         this.mToolBar.setTitle(getResources().getString(R.string.payment_activity_name));
         setSupportActionBar(this.mToolBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -107,6 +110,21 @@ public class PaymentActivity extends AppCompatActivity implements MVP.PaymentVie
     public void paymentSuccess() {
         setResult(MVP.PaymentPresenterOp.PAYMENT_SUCCESS_RESULT_CODE);
         finish();
+    }
+
+    @Override
+    public void paymentFailure() {
+        Toast.makeText(this,getResources().getString(R.string.payment_failure),Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showProgressBar(int visibility) {
+        mProgressCircular.setVisibility(visibility);
+    }
+
+    @Override
+    public String getFieldsErrorMessage() {
+        return getResources().getString(R.string.fields_incomplete);
     }
 }
 

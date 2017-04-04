@@ -9,6 +9,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.gabrielmoraes.simuladorecomerce.adapter.ProductsAdapter;
 import com.example.gabrielmoraes.simuladorecomerce.domain.Product;
@@ -22,6 +25,35 @@ public class MainActivity extends AppCompatActivity implements MVP.ViewOp{
     private RecyclerView.LayoutManager mLayoutManager;
     private ProductsAdapter mAdapter;
     private static MVP.PresenterOp presenter;
+    private ProgressBar mProgressCircular;
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+        this.mToolBar = (Toolbar) findViewById(R.id.tb_main);
+        setSupportActionBar(this.mToolBar);
+
+        mProgressCircular = (ProgressBar)findViewById(R.id.progress_circular);
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        if (this.presenter == null){
+            this.presenter = new Presenter(this);
+        }
+
+        presenter.retrieveProducts();
+
+        mAdapter = new ProductsAdapter(this,presenter.getProducts());
+        mRecyclerView.setAdapter(mAdapter);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -36,48 +68,19 @@ public class MainActivity extends AppCompatActivity implements MVP.ViewOp{
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        this.mToolBar = (Toolbar) findViewById(R.id.tb_main);
-        //this.mToolBar.setTitle(getResources().getString(R.string.main_activity_title));
-        //this.mToolBar.setLogo(R.drawable.ic_github_circle_white_36dp);
-        setSupportActionBar(this.mToolBar);
-
-        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
-
-        mRecyclerView.setHasFixedSize(true);
-
-        // use a linear layout manager
-        mLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-
-        if (this.presenter == null){
-            this.presenter = new Presenter(this);
-        }
-
-        presenter.retrieveProducts();
-
-        // specify an adapter (see also next example)
-        mAdapter = new ProductsAdapter(this,presenter.getProducts());
-        mRecyclerView.setAdapter(mAdapter);
-    }
-
-    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // Check which request we're responding to
+
         if (requestCode == MVP.PresenterOp.CART_ACTIVITY_REQUEST_CODE) {
-            // Make sure the request was successful
             if (resultCode == MVP.PaymentPresenterOp.PAYMENT_SUCCESS_RESULT_CODE) {
                 presenter.clearCartProducts();
+                showToast(getResources().getString(R.string.payment_success));
             }
         }
     }
 
     @Override
     public void updateProductsList() {
-        this.mAdapter.notifyDataSetChanged();
+        mAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -102,4 +105,17 @@ public class MainActivity extends AppCompatActivity implements MVP.ViewOp{
     public void addProductToCart(Product p) {
         presenter.addProductToCart(p);
     }
+
+    @Override
+    public void showToast(String message) {
+        Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showItemAddedMessage() {
+        Toast.makeText(this,getResources().getString(R.string.item__added_to_cart),Toast.LENGTH_SHORT).show();
+    }
+
+
+
 }

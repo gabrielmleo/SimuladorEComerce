@@ -2,6 +2,7 @@ package com.example.gabrielmoraes.simuladorecomerce.mvp;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.gabrielmoraes.simuladorecomerce.R;
 import com.example.gabrielmoraes.simuladorecomerce.domain.Product;
@@ -62,6 +63,7 @@ public class Presenter implements MVP.PresenterOp {
     @Override
     public void addProductToCart(Product p) {
         mCartProductList.add(p);
+        mViewOp.showItemAddedMessage();
     }
 
     @Override

@@ -51,11 +51,9 @@ public class PaymentPresenter implements MVP.PaymentPresenterOp {
     public void confirmPayment() {
 
         boolean error = false;
-        String errorMessage = "Verifique os campos e tente novamente";
-        if ((mView.getCreditCardNumber().length() !=16) || mView.getCreditCardCvv().length() !=3 ){
-            error = true;
-        }
-        if ((mView.getCreditCardMonth().length()!=2) || (mView.getCreditCardYear().length()!=4)){
+        String errorMessage = mView.getFieldsErrorMessage();
+        if ((mView.getCreditCardNumber().length() !=16) || mView.getCreditCardCvv().length() !=3
+                || (mView.getCreditCardMonth().length()!=2) || (mView.getCreditCardYear().length()!=4)){
             error = true;
         }
 
@@ -83,6 +81,16 @@ public class PaymentPresenter implements MVP.PaymentPresenterOp {
     @Override
     public void paymentSuccess() {
         mView.paymentSuccess();
+    }
+
+    @Override
+    public void paymentFailure() {
+        mView.paymentFailure();
+    }
+
+    @Override
+    public void showProgressBar(int visibility) {
+        mView.showProgressBar(visibility);
     }
 
 }
