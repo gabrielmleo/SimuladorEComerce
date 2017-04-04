@@ -27,9 +27,10 @@ public interface MVP {
 
     public interface PresenterOp{
         String BUNDLE_KEY = "CART_PRODUCTS";
+        String PRODUCTS_KEY = "PRODUCTS_KEY";
         int CART_ACTIVITY_REQUEST_CODE = 2;
         public ArrayList<Product> getProducts();
-        public void retrieveProducts();
+        public void retrieveProducts(Bundle p);
         public void updateProductsList(ArrayList<Product> mList);
         public boolean onOptionsItemSelected(MenuItem item);
         public void addProductToCart(Product p);
@@ -40,6 +41,7 @@ public interface MVP {
     public interface ModelOp{
         public void retrieveProducts();
         public void retrofitConfiguration();
+        public void renewedList(ArrayList<Product> list);
     }
 
     public interface CartViewOp{

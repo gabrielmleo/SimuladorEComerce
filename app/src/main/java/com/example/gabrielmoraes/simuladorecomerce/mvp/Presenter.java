@@ -32,15 +32,21 @@ public class Presenter implements MVP.PresenterOp {
     }
 
     @Override
-    public void retrieveProducts() {
-        this.mModelOp.retrieveProducts();
+    public void retrieveProducts(Bundle saveInstanceState) {
+        if (saveInstanceState!=null){
+            ArrayList<Product> products = saveInstanceState.getParcelableArrayList(MVP.PresenterOp.PRODUCTS_KEY);
+            mModelOp.renewedList(products);
+        }else{
+            mModelOp.retrieveProducts();
+        }
+
     }
 
     @Override
     public void updateProductsList(ArrayList<Product> mList){
-        this.mProductList.clear();
-        this.mProductList.addAll(mList);
-        this.mViewOp.updateProductsList();
+        mProductList.clear();
+        mProductList.addAll(mList);
+        mViewOp.updateProductsList();
     }
 
     @Override

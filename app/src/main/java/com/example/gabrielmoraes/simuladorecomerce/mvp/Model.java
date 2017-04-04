@@ -61,4 +61,12 @@ public class Model implements MVP.ModelOp {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
+
+    @Override
+    public void renewedList(ArrayList<Product> list) {
+        ArrayList<Product> renewedList = new ArrayList<>();
+        renewedList.addAll(list);
+
+        mPresenterOp.updateProductsList(renewedList);
+    }
 }

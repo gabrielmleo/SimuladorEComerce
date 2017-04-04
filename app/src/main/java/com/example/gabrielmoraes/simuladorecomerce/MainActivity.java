@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements MVP.ViewOp{
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,10 +52,16 @@ public class MainActivity extends AppCompatActivity implements MVP.ViewOp{
             this.presenter = new Presenter(this);
         }
 
-        presenter.retrieveProducts();
+        presenter.retrieveProducts(savedInstanceState);
 
         mAdapter = new ProductsAdapter(this,presenter.getProducts());
         mRecyclerView.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putParcelableArrayList(MVP.PresenterOp.PRODUCTS_KEY, presenter.getProducts());
+        super.onSaveInstanceState(outState);
     }
 
     @Override

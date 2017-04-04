@@ -27,6 +27,8 @@ public class CartActivity extends AppCompatActivity implements MVP.CartViewOp {
     private MVP.CartPresenterOp mCartPresenter;
     private CartProductsAdapter mCartAdapter;
     private RelativeLayout mEmptyCartList;
+    public static String PRODUCTS_CART_KEY = "PRODUCTS_CART_KEY";
+    public ArrayList<Product> mCartProducts = new ArrayList<>();
 
 
     @Override
@@ -50,15 +52,34 @@ public class CartActivity extends AppCompatActivity implements MVP.CartViewOp {
         }
 
         mCartPresenter.setView(this);
-        if (getIntent() != null){
-            ArrayList<Product> l = getIntent().getParcelableArrayListExtra(MVP.PresenterOp.BUNDLE_KEY);
-            mCartPresenter.setCartProducts(l);
-            mCartPresenter.checkEmptyList();
 
-        }
+        retrieveProducts(savedInstanceState);
+
 
         mCartAdapter = new CartProductsAdapter(this,mCartPresenter.getCartProductsList());
         mCartRecyclerView.setAdapter(mCartAdapter);
+    }
+
+    public void retrieveProducts(Bundle savedInstanceState){
+        if (savedInstanceState!=null){
+            mCartProducts = savedInstanceState.getParcelableArrayList(PRODUCTS_CART_KEY);
+        }else{
+            if (getIntent() != null){
+                mCartProducts = getIntent().getParcelableArrayListExtra(MVP.PresenterOp.BUNDLE_KEY);
+
+            }
+        }
+
+        mCartPresenter.setCartProducts(mCartProducts);
+        mCartPresenter.checkEmptyList();
+
+    }
+
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putParcelableArrayList(PRODUCTS_CART_KEY, mCartPresenter.getCartProductsList());
+        super.onSaveInstanceState(outState);
     }
 
     @Override
