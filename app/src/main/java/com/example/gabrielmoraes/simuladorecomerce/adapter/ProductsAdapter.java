@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.gabrielmoraes.simuladorecomerce.MainActivity;
 import com.example.gabrielmoraes.simuladorecomerce.R;
 import com.example.gabrielmoraes.simuladorecomerce.domain.Product;
+import com.example.gabrielmoraes.simuladorecomerce.util.Util;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -74,7 +75,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
         public void setDados(Product p){
             this.mProductNameTextView.setText(p.getTitle());
             this.mSellerNameTextView.setText(p.getSeller());
-            this.mPriceTextView.setText(p.getPrice());
+            this.mPriceTextView.setText(Util.currencyFormater(p.getPrice()));
             Picasso.with(mProductPhotoImageView.getContext()).load(p.getThumbnailHd()).into(mProductPhotoImageView);
         }
 

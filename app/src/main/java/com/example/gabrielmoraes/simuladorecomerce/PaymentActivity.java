@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.gabrielmoraes.simuladorecomerce.domain.Product;
 import com.example.gabrielmoraes.simuladorecomerce.mvp.MVP;
 import com.example.gabrielmoraes.simuladorecomerce.mvp.PaymentPresenter;
+import com.example.gabrielmoraes.simuladorecomerce.util.Util;
 
 import java.util.ArrayList;
 
@@ -80,7 +81,7 @@ public class PaymentActivity extends AppCompatActivity implements MVP.PaymentVie
         creditCardCvv = (EditText)findViewById(R.id.credit_card_cvv);
         paymentButton = (Button) findViewById(R.id.pay_button);
         amountValue = (TextView) findViewById(R.id.amount_value);
-        amountValue.setText(mPresenter.getAmountValue());
+        amountValue.setText(Util.currencyFormater(mPresenter.getAmountValue()));
     }
 
     public void confirmPayment(View v){

@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.gabrielmoraes.simuladorecomerce.CartActivity;
 import com.example.gabrielmoraes.simuladorecomerce.R;
 import com.example.gabrielmoraes.simuladorecomerce.domain.Product;
+import com.example.gabrielmoraes.simuladorecomerce.util.Util;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -66,7 +67,7 @@ public class CartProductsAdapter extends RecyclerView.Adapter<CartProductsAdapte
         public void setValues(Product p){
             mCartProductName.setText(p.getTitle());
             mCartProductSeller.setText(p.getSeller());
-            mCartProductPrice.setText(p.getPrice());
+            mCartProductPrice.setText(Util.currencyFormater(p.getPrice()));
             Picasso.with(this.mCartProductImage.getContext()).load(p.getThumbnailHd()).into(this.mCartProductImage);
         }
     }

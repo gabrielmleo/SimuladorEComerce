@@ -15,7 +15,6 @@ public class TransactionPresenter implements MVP.TransactionPresenterOp {
 
     private MVP.TransactionViewOp mView;
     private MVP.TransactionModelOp mModel;
-    private List<PaymentTransaction> mTransactionList = new ArrayList<>();
 
     public TransactionPresenter(){
         mModel = new TransactionModel(this);
@@ -32,7 +31,7 @@ public class TransactionPresenter implements MVP.TransactionPresenterOp {
     }
     @Override
     public void checkEmptyList() {
-        if (mTransactionList.size()!=0){
+        if (mModel.getTransactionList().size()!=0){
             mView.setEmptyListVisibility(View.GONE);
         }
         else{

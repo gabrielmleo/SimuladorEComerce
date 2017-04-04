@@ -103,6 +103,7 @@ public interface MVP {
 
     public interface TransactionViewOp{
         public void setEmptyListVisibility(int i);
+        public String getHiddenMask();
 
     }
 

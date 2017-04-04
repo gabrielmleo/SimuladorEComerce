@@ -28,8 +28,6 @@ public class HistoryActivity extends AppCompatActivity implements MVP.Transactio
         setContentView(R.layout.activity_history);
         emptyHistoryView = (RelativeLayout) findViewById(R.id.empty_history_view);
 
-
-
         mToolBar = (Toolbar) findViewById(R.id.tb_history);
         mToolBar.setTitle(getResources().getString(R.string.history_activity_name));
         setSupportActionBar(mToolBar);
@@ -49,6 +47,9 @@ public class HistoryActivity extends AppCompatActivity implements MVP.Transactio
 
         mAdapter = new HistoryTransactionsAdapter(this,mPresenter.getTransactionList());
         mRecyclerView.setAdapter(mAdapter);
+        mPresenter.checkEmptyList();
+
+
 
 
     }
@@ -68,5 +69,10 @@ public class HistoryActivity extends AppCompatActivity implements MVP.Transactio
     @Override
     public void setEmptyListVisibility(int i) {
         emptyHistoryView.setVisibility(i);
+    }
+
+    @Override
+    public String getHiddenMask() {
+        return getResources().getString(R.string.card_hidden_placeholder);
     }
 }

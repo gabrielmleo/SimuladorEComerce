@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.example.gabrielmoraes.simuladorecomerce.R;
 import com.example.gabrielmoraes.simuladorecomerce.domain.PaymentTransaction;
 import com.example.gabrielmoraes.simuladorecomerce.mvp.MVP;
+import com.example.gabrielmoraes.simuladorecomerce.util.Util;
 
 import java.text.NumberFormat;
 import java.util.List;
@@ -66,8 +67,8 @@ public class HistoryTransactionsAdapter extends RecyclerView.Adapter<HistoryTran
 
         public void setValues(PaymentTransaction pTransaction){
             transactionOwner.setText(pTransaction.creditCardOwnerName);
-            transactionCreditCard.setText(pTransaction.creditCardLastDigits);
-            transactionValue.setText(pTransaction.transactionValue);
+            transactionCreditCard.setText(mView.getHiddenMask()+pTransaction.creditCardLastDigits);
+            transactionValue.setText(Util.currencyFormater(pTransaction.transactionValue));
             transactionDate.setText(pTransaction.transactionDate);
         }
     }
