@@ -10,6 +10,7 @@ import com.example.gabrielmoraes.simuladorecomerce.R;
 import com.example.gabrielmoraes.simuladorecomerce.domain.PaymentTransaction;
 import com.example.gabrielmoraes.simuladorecomerce.mvp.MVP;
 
+import java.text.NumberFormat;
 import java.util.List;
 
 /**

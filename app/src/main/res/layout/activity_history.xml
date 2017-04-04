@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:textColor="@color/primaryTextColor"
+            android:textColor="@color/secondaryTextColor"
             android:text="@string/empty_history_text"/>
     </RelativeLayout>
     <android.support.v7.widget.RecyclerView
