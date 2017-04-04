@@ -7,6 +7,7 @@
     <string name="buy_button_text">comprar</string>
     <string name="cart_menu_text">carrinho</string>
     <string name="delete_mark">X</string>
+    <string name="fail_to_download_products">Ocorreu um erro ao baixar os itens</string>
 
 
     <string name="history_menu_text">histórico de transações</string>

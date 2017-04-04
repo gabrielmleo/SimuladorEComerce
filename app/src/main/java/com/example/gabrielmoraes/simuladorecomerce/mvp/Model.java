@@ -38,7 +38,7 @@ public class Model implements MVP.ModelOp {
             @Override
             public void onResponse(Call<ArrayList<Product>> call, Response<ArrayList<Product>> response) {
                 if (!response.isSuccessful()){
-                    //mPresenterOp.updateProductsList(response.body());
+                    mPresenterOp.connectionHasFailed();
                 }
                 else{
                     mPresenterOp.updateProductsList(response.body());
@@ -48,7 +48,7 @@ public class Model implements MVP.ModelOp {
             @Override
             public void onFailure(Call<ArrayList<Product>> call, Throwable t) {
 
-                Log.i("AIAIAIAI0","AIAIAIAIAOOOOOPPP");
+                mPresenterOp.connectionHasFailed();
             }
         });
 

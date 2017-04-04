@@ -1,5 +1,6 @@
 package com.example.gabrielmoraes.simuladorecomerce.mvp;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -36,6 +37,8 @@ public interface MVP {
         public void addProductToCart(Product p);
         public void clearCartProducts();
         public void addCartProducts(ArrayList<Product> products);
+        public void connectionHasFailed();
+        public void setContext(Context con);
     }
 
     public interface ModelOp{

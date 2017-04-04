@@ -48,10 +48,10 @@ public class MainActivity extends AppCompatActivity implements MVP.ViewOp{
         mLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        if (this.presenter == null){
-            this.presenter = new Presenter(this);
+        if (presenter == null){
+            presenter = new Presenter(this);
         }
-
+        presenter.setContext(this);
         presenter.retrieveProducts(savedInstanceState);
 
         mAdapter = new ProductsAdapter(this,presenter.getProducts());

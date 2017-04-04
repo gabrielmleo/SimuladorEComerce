@@ -1,5 +1,6 @@
 package com.example.gabrielmoraes.simuladorecomerce.mvp;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +20,7 @@ public class Presenter implements MVP.PresenterOp {
     private MVP.ViewOp mViewOp;
     private ArrayList<Product> mProductList = new ArrayList<>();
     private ArrayList<Product> mCartProductList = new ArrayList<>();
+    private Context mContext;
 
 
     public Presenter (MVP.ViewOp mViewOp){
@@ -81,6 +83,16 @@ public class Presenter implements MVP.PresenterOp {
     public void addCartProducts(ArrayList<Product> products) {
         clearCartProducts();
         mCartProductList.addAll(products);
+    }
+
+    @Override
+    public void connectionHasFailed() {
+        mViewOp.showToast(mContext.getResources().getString(R.string.fail_to_download_products));
+    }
+
+    @Override
+    public void setContext(Context con) {
+        mContext = con;
     }
 
 
