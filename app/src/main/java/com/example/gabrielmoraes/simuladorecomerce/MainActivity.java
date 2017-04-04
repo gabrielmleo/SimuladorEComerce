@@ -18,6 +18,8 @@ import com.example.gabrielmoraes.simuladorecomerce.domain.Product;
 import com.example.gabrielmoraes.simuladorecomerce.mvp.MVP;
 import com.example.gabrielmoraes.simuladorecomerce.mvp.Presenter;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity implements MVP.ViewOp{
 
     private RecyclerView mRecyclerView;
@@ -74,6 +76,13 @@ public class MainActivity extends AppCompatActivity implements MVP.ViewOp{
             if (resultCode == MVP.PaymentPresenterOp.PAYMENT_SUCCESS_RESULT_CODE) {
                 presenter.clearCartProducts();
                 showToast(getResources().getString(R.string.payment_success));
+            }else if(resultCode == MVP.CartPresenterOp.CART_EMPRY_RESULT_CODE){
+                if (data!=null){
+                    ArrayList<Product> array = data.getParcelableArrayListExtra(MVP.CartPresenterOp.BUNDLE_CART_LIST);
+                    presenter.addCartProducts(array);
+
+                }
+
             }
         }
     }

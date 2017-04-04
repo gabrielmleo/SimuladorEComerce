@@ -37,6 +37,17 @@
         android:layout_marginTop="2dp"
         android:textColor="@color/secondaryTextColor"
         android:textSize="@dimen/multilines_secondary_text_font_size"/>
+
+    <Button
+        android:id="@+id/delete_product"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="@string/delete_mark"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        style="?android:attr/borderlessButtonStyle"
+        />
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"

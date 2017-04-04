@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -48,12 +49,13 @@ public class CartProductsAdapter extends RecyclerView.Adapter<CartProductsAdapte
         return mProducts.size();
     }
 
-    public class CartViewHolder extends RecyclerView.ViewHolder{
+    public class CartViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         private ImageView mCartProductImage;
         private TextView mCartProductName;
         private TextView mCartProductSeller;
         private TextView mCartProductPrice;
+        private Button mCartDeleteProduct;
 
         public CartViewHolder(View itemView) {
             super(itemView);
@@ -62,6 +64,8 @@ public class CartProductsAdapter extends RecyclerView.Adapter<CartProductsAdapte
             mCartProductName = (TextView) itemView.findViewById(R.id.cart_product_name);
             mCartProductSeller = (TextView) itemView.findViewById(R.id.cart_seller_product_name);
             mCartProductPrice = (TextView) itemView.findViewById(R.id.cart_product_price);
+            mCartDeleteProduct = (Button) itemView.findViewById(R.id.delete_product);
+            mCartDeleteProduct.setOnClickListener(this);
         }
 
         public void setValues(Product p){
@@ -69,6 +73,12 @@ public class CartProductsAdapter extends RecyclerView.Adapter<CartProductsAdapte
             mCartProductSeller.setText(p.getSeller());
             mCartProductPrice.setText(Util.currencyFormater(p.getPrice()));
             Picasso.with(this.mCartProductImage.getContext()).load(p.getThumbnailHd()).into(this.mCartProductImage);
+        }
+
+        @Override
+        public void onClick(View v) {
+            mProducts.remove(getAdapterPosition());
+            mCartActivity.updateCartItens();
         }
     }
 }

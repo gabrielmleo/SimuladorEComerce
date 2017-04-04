@@ -131,7 +131,22 @@ public class CartActivity extends AppCompatActivity implements MVP.CartViewOp {
     }
 
     @Override
-    public void back() {
+    public void onBackPressed() {
+        setResultIfCartIsEmpty();
         finish();
+        super.onBackPressed();
+    }
+
+    @Override
+    public void back() {
+        setResultIfCartIsEmpty();
+        finish();
+    }
+
+    public void setResultIfCartIsEmpty(){
+        Intent returnIntent = new Intent();
+        returnIntent.putParcelableArrayListExtra(MVP.CartPresenterOp.BUNDLE_CART_LIST,mCartPresenter.getCartProductsList());
+            setResult(MVP.CartPresenterOp.CART_EMPRY_RESULT_CODE,returnIntent);
+
     }
 }

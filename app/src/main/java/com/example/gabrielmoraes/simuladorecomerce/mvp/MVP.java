@@ -34,7 +34,7 @@ public interface MVP {
         public boolean onOptionsItemSelected(MenuItem item);
         public void addProductToCart(Product p);
         public void clearCartProducts();
-
+        public void addCartProducts(ArrayList<Product> products);
     }
 
     public interface ModelOp{
@@ -54,6 +54,8 @@ public interface MVP {
 
     public interface CartPresenterOp{
         String BUNDLE_PAYMENT_KEY = "PAYMENT_KEY";
+        String BUNDLE_CART_LIST = "CART_LIST";
+        int CART_EMPRY_RESULT_CODE = 22;
         public void setView(CartViewOp view);
         public void setCartProducts(ArrayList<Product> list);
         public ArrayList<Product> getCartProductsList();
