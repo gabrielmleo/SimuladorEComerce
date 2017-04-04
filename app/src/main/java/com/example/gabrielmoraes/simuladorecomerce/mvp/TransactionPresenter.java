@@ -1,5 +1,7 @@
 package com.example.gabrielmoraes.simuladorecomerce.mvp;
 
+import android.view.View;
+
 import com.example.gabrielmoraes.simuladorecomerce.domain.PaymentTransaction;
 
 import java.util.ArrayList;
@@ -27,5 +29,14 @@ public class TransactionPresenter implements MVP.TransactionPresenterOp {
     @Override
     public void setView(MVP.TransactionViewOp viewOp) {
         mView = viewOp;
+    }
+    @Override
+    public void checkEmptyList() {
+        if (mTransactionList.size()!=0){
+            mView.setEmptyListVisibility(View.GONE);
+        }
+        else{
+            mView.setEmptyListVisibility(View.VISIBLE);
+        }
     }
 }

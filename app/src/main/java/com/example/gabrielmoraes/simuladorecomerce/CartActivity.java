@@ -129,4 +129,9 @@ public class CartActivity extends AppCompatActivity implements MVP.CartViewOp {
         mCartPresenter.checkEmptyList();
 
     }
+
+    @Override
+    public void back() {
+        finish();
+    }
 }

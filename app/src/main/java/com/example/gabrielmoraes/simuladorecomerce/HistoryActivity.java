@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 
@@ -26,7 +27,7 @@ public class HistoryActivity extends AppCompatActivity implements MVP.Transactio
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
         emptyHistoryView = (RelativeLayout) findViewById(R.id.empty_history_view);
-        emptyHistoryView.setVisibility(View.GONE);
+
 
 
         mToolBar = (Toolbar) findViewById(R.id.tb_history);
@@ -50,5 +51,23 @@ public class HistoryActivity extends AppCompatActivity implements MVP.Transactio
         mRecyclerView.setAdapter(mAdapter);
 
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                finish();
+                return true;
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    public void setEmptyListVisibility(int i) {
+        emptyHistoryView.setVisibility(i);
     }
 }

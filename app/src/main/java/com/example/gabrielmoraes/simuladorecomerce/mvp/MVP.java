@@ -48,6 +48,7 @@ public interface MVP {
         public void setEmptyListVisibility(int i);
         public void updateMenuItem();
         public void updateCartItens();
+        public void back();
 
     }
 
@@ -101,12 +102,14 @@ public interface MVP {
     }
 
     public interface TransactionViewOp{
+        public void setEmptyListVisibility(int i);
 
     }
 
     public interface TransactionPresenterOp{
         public List<PaymentTransaction> getTransactionList();
         public void setView(MVP.TransactionViewOp viewOp);
+        public void checkEmptyList();
     }
 
     public interface TransactionModelOp{

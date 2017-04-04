@@ -41,10 +41,17 @@ public class CartPresenter implements MVP.CartPresenterOp {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.payment_menu_button:
+
                 Bundle b = new Bundle();
                 b.putParcelableArrayList(BUNDLE_PAYMENT_KEY,mCartProductsList);
                 mView.showPaymentActivity(b);
                 return true;
+
+            case android.R.id.home:
+
+                mView.back();
+                return true;
+
             default:
                 return mView.callSuperOnOptionItemSelected(item);
         }
